@@ -156,7 +156,7 @@ const ProfileTab = ({ form }) => {
           name="academicLevel"
           label="Academic level"
         >
-          <Select defaultValue="Not required">
+          <Select defaultValue="Academic Level">
             <Select.Option value="">Not required</Select.Option>
             <Select.Option value="high_school">High School</Select.Option>
             <Select.Option value="bachelors">Bachelor's Degree</Select.Option>
