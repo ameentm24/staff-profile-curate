@@ -132,11 +132,12 @@ const ProfileTab = ({ form }) => {
             <Select.Option value="3">Robert Johnson</Select.Option>
           </Select>
         </Form.Item>
-
+<div className="mb-6">
         <Form.Item
           name="role"
           label="Role"
         >
+          </div>
           <Select defaultValue="Employee">
             <Select.Option value="employee">Employee</Select.Option>
             <Select.Option value="manager">Manager</Select.Option>
