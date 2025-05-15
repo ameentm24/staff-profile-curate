@@ -25,7 +25,7 @@ const AdditionalInfoTab = () => {
           label="Academic level"
         >
           <Select 
-            defaultValue="Not required" 
+            defaultValue="Academic Level" 
           >
             <Select.Option value="not_required">Not required</Select.Option>
             <Select.Option value="high_school">High School</Select.Option>

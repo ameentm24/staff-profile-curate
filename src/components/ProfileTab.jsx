@@ -114,11 +114,11 @@ const ProfileTab = ({ form }) => {
           rules={[{ required: true, message: 'Please select job position!' }]}
         >
           <Select placeholder="None selected">
-            <Select.Option value="manager">Manager</Select.Option>
-            <Select.Option value="developer">Developer</Select.Option>
-            <Select.Option value="hr">HR Associate</Select.Option>
-            <Select.Option value="designer">Designer</Select.Option>
-            <Select.Option value="marketing">Marketing</Select.Option>
+            <Select.Option value="Manager">Manager</Select.Option>
+            <Select.Option value="Developer">Developer</Select.Option>
+            <Select.Option value="HR">HR Associate</Select.Option>
+            <Select.Option value="Designer">Designer</Select.Option>
+            <Select.Option value="Marketing">Marketing</Select.Option>
           </Select>
         </Form.Item>
 
