@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar } from 'antd';
-// import { UserOutlined, MailOutlined, PhoneOutlined, BankOutlined } from '@ant-design/icons';
 
 import {
   UserOutlined,
@@ -30,13 +29,13 @@ const SocialButton = ({ icon, color }) => (
 );
 
 const StaffProfilePreviewTab = ({ form }) => {
-  // Get all form values
+
   const formValues = form ? form.getFieldsValue(true) : {};
 
-  // Default avatar image if none is selected
+
   const profileImage = formValues.profileImage || null;
 
-  // Get staff name from first and last name
+
   const staffName = formValues.firstName && formValues.lastName
     ? `${formValues.firstName} ${formValues.lastName}`
     : formValues.firstName || formValues.lastName || '-';
@@ -66,7 +65,7 @@ const StaffProfilePreviewTab = ({ form }) => {
           </div>
         </div>
 
-        {/* Contact Info */}
+
         <div className="border-t border-gray-200 p-4">
           <div className="flex items-center py-2">
             <MailOutlined className="mr-2 text-gray-500" />
@@ -85,7 +84,7 @@ const StaffProfilePreviewTab = ({ form }) => {
           </div>
         </div>
 
-        {/* Manager */}
+
         <div className="border-t border-gray-200 p-4">
           <div className="flex items-center">
             <div className="text-gray-600 mr-2">Direct manager:</div>
@@ -94,7 +93,7 @@ const StaffProfilePreviewTab = ({ form }) => {
         </div>
       </div>
 
-      {/* General Information */}
+
       <div className="mb-6">
         <SectionTitle title="General information" />
         <div className="bg-gray-50 rounded-md p-4">
@@ -117,7 +116,7 @@ const StaffProfilePreviewTab = ({ form }) => {
         </div>
       </div>
 
-      {/* Related Information */}
+
       <div>
         <SectionTitle title="Related information" />
         <div className="bg-gray-50 rounded-md p-4">
