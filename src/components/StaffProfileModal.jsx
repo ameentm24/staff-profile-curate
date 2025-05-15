@@ -120,7 +120,7 @@ const StaffProfileModal = ({ visible, onClose }) => {
                 initialValues={{
                     status: 'Working',
                     role: 'Employee',
-                    academicLevel: 'Not required',
+                    academicLevel: '-',
                     hourlyRate: '0.00',
                     defaultLanguage: 'System Default',
                     direction: 'System Default'
