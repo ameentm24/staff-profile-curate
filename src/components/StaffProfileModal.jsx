@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, Tabs, Form, Button, Steps } from 'antd';
+import { Modal, Tabs, Form, Button, Steps, notification } from 'antd';
 import { useDispatch } from 'react-redux';
 import { addStaff } from '../store/staffSlice';
 import ProfileTab from './ProfileTab';
@@ -7,6 +7,7 @@ import RelatedInformationTab from './RelatedInformationTab';
 import AdditionalInfoTab from './AdditionalInfoTab';
 import StaffPreviewTab from './StaffPreviewTab';
 import { UserOutlined, InfoCircleOutlined, SettingOutlined, FileOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const { Step } = Steps;
 
@@ -14,6 +15,7 @@ const StaffProfileModal = ({ visible, onClose }) => {
     const [form] = Form.useForm();
     const [activeTab, setActiveTab] = useState('profile');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleTabChange = (key) => {
         setActiveTab(key);
@@ -36,9 +38,54 @@ const StaffProfileModal = ({ visible, onClose }) => {
 
     const handleSubmit = () => {
         form.validateFields().then(values => {
-            dispatch(addStaff(values));
-            form.resetFields();
-            onClose();
+            // Format dates and create a staffName property
+            const formattedValues = {
+                ...values,
+                birthday: values.birthday ? values.birthday.format('DD MMM YYYY') : undefined,
+                dateOfIssue: values.dateOfIssue ? values.dateOfIssue.format('DD MMM YYYY') : undefined,
+                staffName: values.firstName && values.lastName ?
+                    `${values.firstName} ${values.lastName}` :
+                    values.firstName || values.lastName || '-'
+            };
+
+            // Add to Redux store with a unique ID
+            const staffId = Date.now();
+            const staffWithId = { id: staffId, ...formattedValues };
+
+            try {
+                // Dispatch action to add staff to Redux store
+                dispatch(addStaff(staffWithId));
+
+                // Show success notification
+                notification.success({
+                    message: 'Staff Profile Created',
+                    description: `Staff profile for ${staffWithId.staffName} has been successfully created.`,
+                    duration: 3
+                });
+
+                // Close modal
+                onClose();
+
+                // Reset form
+                form.resetFields();
+
+                // Navigate to staff profile page with the ID
+                navigate('/staff-profile', {
+                    state: {
+                        staffId: staffId,
+                        // Also passing the full data as fallback
+                        staffData: staffWithId
+                    }
+                });
+            } catch (error) {
+                // Show error notification
+                notification.error({
+                    message: 'Error Creating Staff Profile',
+                    description: 'There was an error creating the staff profile. Please try again.',
+                    duration: 3
+                });
+                console.error('Error adding staff to store:', error);
+            }
         }).catch(info => {
             console.log('Validate Failed:', info);
         });
@@ -72,34 +119,34 @@ const StaffProfileModal = ({ visible, onClose }) => {
 
     const renderFooterButtons = () => {
         return [
-            <Button key="close" onClick={onClose}>
+            <Button key="close" onClick={onClose} className="border-black text-black hover:bg-gray-100">
                 Close
             </Button>,
             activeTab !== 'profile' && (
-                <Button key="prev" onClick={handlePrev}>
+                <Button key="prev" onClick={handlePrev} className="border-black text-black hover:bg-gray-100">
                     Previous
                 </Button>
             ),
             activeTab !== 'preview' ? (
-                <Button key="next" type='primary' onClick={handleNext} className="bg-gray-900 hover:bg-gray-800">
+                <Button key="next" type="primary" onClick={handleNext} className="bg-black hover:bg-gray-800 border-black">
                     Next
                 </Button>
-            ) : (
-                <Button
-                    key="save"
-                    type="primary"
-                    onClick={handleSubmit}
-                    className="bg-gray-900 hover:bg-gray-800"
-                >
-                    Save
-                </Button>
+            ) : (""
+                // <Button
+                //     key="save"
+                //     type="primary"
+                //     onClick={handleSubmit}
+                //     className="bg-black hover:bg-gray-800 border-black"
+                // >
+                //     Save
+                // </Button>
             )
         ].filter(Boolean);
     };
 
     return (
         <Modal
-            title="Staff profile Create"
+            title="Staff Profile Create"
             open={visible}
             onCancel={onClose}
             width={1200}

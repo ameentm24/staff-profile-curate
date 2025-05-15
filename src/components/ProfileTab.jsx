@@ -4,7 +4,7 @@ import ProfilePicture from './ProfilePicture';
 const ProfileTab = ({ form }) => {
   return (
     <div className="px-4">
-      <div className="mb-4">
+      <div className="mb-4 mt-10">
         <Checkbox>
           <span className="flex items-center">
             <span className="text-gray-500 mr-1">ⓘ</span>
@@ -13,7 +13,7 @@ const ProfileTab = ({ form }) => {
         </Checkbox>
       </div>
 
-      <div className="flex justify-center mb-6">
+      <div className="flex  mb-6">
         <ProfilePicture
           profileImage={form.getFieldValue('profileImage')}
           onImageChange={(image) => form.setFieldsValue({ profileImage: image })}

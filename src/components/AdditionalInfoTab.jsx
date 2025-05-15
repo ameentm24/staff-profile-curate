@@ -76,7 +76,7 @@ const AdditionalInfoTab = () => {
 
         <Form.Item
           name="emailSignature"
-          label={<span className="flex items-center"><span className="text-black font-bold mr-1">•</span>Email Signature</span>}
+          label={<span className="flex items-center"><span className="text-black  mr-1">ⓘ</span>Email Signature</span>}
         >
           <Input.TextArea rows={4} placeholder="Enter email signature" />
         </Form.Item>

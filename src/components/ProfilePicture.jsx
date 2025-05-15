@@ -47,13 +47,13 @@ const ProfilePicture = ({ profileImage, onImageChange }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
       <div
         className="cursor-pointer relative"
         onClick={handleImageClick}
       >
         {loading ? (
-          <div className="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center">
+          <div className="w-32 h-32 bg-gray-200 rounded-full flex items-center ">
             <Spin indicator={<LoadingOutlined style={{ fontSize: 36 }} spin />} />
           </div>
         ) : (
@@ -62,10 +62,10 @@ const ProfilePicture = ({ profileImage, onImageChange }) => {
               size={128}
               icon={!previewImage && <UserOutlined style={{ fontSize: '64px' }} />}
               src={previewImage}
-              className="bg-gray-100 border border-gray-200"
+              className="bg-gray-100 border border-gray-200 "
             />
-            <div className="absolute inset-0  bg-opacity-0 hover:bg-opacity-20 rounded-full flex items-center justify-center transition-all duration-200">
-              <span className="text-transparent hover:text-white text-xs font-medium">Change</span>
+            <div className="absolute inset-0   bg-opacity-0 hover:bg-opacity-20 rounded-full flex items-center justify-center transition-all duration-200">
+              <span className="text-transparent hover:text-black text-xs font-medium">Change</span>
             </div>
           </>
         )}
@@ -76,6 +76,11 @@ const ProfilePicture = ({ profileImage, onImageChange }) => {
         onChange={handleFileChange}
         accept="image/jpeg,image/png"
         className="hidden"
+        disabled={loading}
+        style={{ display: 'none' }}
+        title=""
+        aria-hidden="true"
+
       />
     </div>
   );
