@@ -81,7 +81,7 @@ const StaffProfileModal = ({ visible, onClose }) => {
                 </Button>
             ),
             activeTab !== 'preview' ? (
-                <Button key="next" type="primary" onClick={handleNext} className="bg-gray-900 hover:bg-gray-800">
+                <Button key="next" type='primary' onClick={handleNext} className="bg-gray-900 hover:bg-gray-800">
                     Next
                 </Button>
             ) : (
@@ -102,7 +102,7 @@ const StaffProfileModal = ({ visible, onClose }) => {
             title="Staff profile Create"
             open={visible}
             onCancel={onClose}
-            width={800}
+            width={1200}
             footer={renderFooterButtons()}
             className="staff-profile-modal"
             maskClosable={false}

@@ -14,9 +14,9 @@ const ProfileTab = ({ form }) => {
       </div>
 
       <div className="flex justify-center mb-6">
-        <ProfilePicture 
-          profileImage={form.getFieldValue('profileImage')} 
-          onImageChange={(image) => form.setFieldsValue({ profileImage: image })} 
+        <ProfilePicture
+          profileImage={form.getFieldValue('profileImage')}
+          onImageChange={(image) => form.setFieldsValue({ profileImage: image })}
         />
       </div>
 
@@ -132,18 +132,25 @@ const ProfileTab = ({ form }) => {
             <Select.Option value="3">Robert Johnson</Select.Option>
           </Select>
         </Form.Item>
-<div className="mb-6">
+
+      </div>
+
+
+      <div className="mb-6">
         <Form.Item
           name="role"
           label="Role"
         >
-          </div>
+
           <Select defaultValue="Employee">
             <Select.Option value="employee">Employee</Select.Option>
             <Select.Option value="manager">Manager</Select.Option>
             <Select.Option value="admin">Admin</Select.Option>
           </Select>
         </Form.Item>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <Form.Item
           name="academicLevel"
@@ -162,7 +169,7 @@ const ProfileTab = ({ form }) => {
           name="hourlyRate"
           label="Hourly Rate"
         >
-          <Input 
+          <Input
             defaultValue="0.00"
             suffix={<span>₹</span>}
           />
