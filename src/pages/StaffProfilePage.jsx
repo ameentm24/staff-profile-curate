@@ -82,7 +82,7 @@ const StaffProfilePage = () => {
     }, 300); // Short delay for better UX
   }, [staffFromStore, locationStaffData, staffId, staffList]);
 
-  // Format the date to display when the profile was viewed
+
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString('en-US', {
     day: 'numeric',
@@ -94,7 +94,7 @@ const StaffProfilePage = () => {
     navigate(-1);
   };
 
-  // If loading, show spinner
+ 
   if (loading) {
     return (
       <div className="bg-white p-6 max-w-6xl mx-auto text-center" style={{ minHeight: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -103,7 +103,7 @@ const StaffProfilePage = () => {
     );
   }
 
-  // If no staff data is found after loading, show a message
+
   if (!staffData) {
     return (
       <div className="bg-white p-6 max-w-6xl mx-auto text-center">
@@ -124,9 +124,9 @@ const StaffProfilePage = () => {
     <div className="bg-white p-6 max-w-6xl mx-auto">
       <div className="mb-6 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Staff Profile</h1>
-        <div className="text-gray-500">
+        {/* <div className="text-gray-500">
           Viewed on: {formattedDate}
-        </div>
+        </div> */}
       </div>
 
       <div className="flex gap-8">
